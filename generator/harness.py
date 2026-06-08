@@ -62,10 +62,16 @@ def _emit_shims(h: list[str], rows: list[dict]) -> None:
         h.append(f"__attribute__((noinline, used))\n")
         h.append(f"void ibt_callsite_{name}(void) {{\n")
         h.append(f"    typedef {sig_for_td};\n")
-        h.append(f"    {tname} p = ({tname})opaque_barrier_{name}((uintptr_t)&{name});\n")
+        
+        if row["call_mode"] == "nocf_ptr":
+            h.append(f"    __attribute__((nocf_check)) {tname} p = (__attribute__((nocf_check)) {tname})opaque_barrier_{name}((uintptr_t)&{name});\n")
+            call_expr = f"(*p)({args})" if args else "(*p)()"
+        else:
+            h.append(f"    {tname} p = ({tname})opaque_barrier_{name}((uintptr_t)&{name});\n")
+            call_expr = f"p({args})" if args else "p()"
+            
         h.append(f"    ibt_marker_{i} = (uint64_t)(uintptr_t)p + {i};\n")
         h.append(f'    asm volatile("" ::: "memory");\n')
-        call_expr = f"p({args})" if args else "p()"
         h.append(f"    (void){call_expr};\n")
         h.append(f'    asm volatile("" ::: "memory");\n')
         h.append(f"}}\n\n")
