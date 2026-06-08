@@ -105,7 +105,7 @@ def is_simple(sig: str) -> bool:
     return True
 
 def default_arg_for(_param: str) -> str:
-    """Just so you know this is just to return a default value for an argument"""
+    """Just so you know this is just to return a default value for an argument:)"""
     return "0"
 
 def collect_prototypes(lines: list[str]) -> dict[str, str]:
