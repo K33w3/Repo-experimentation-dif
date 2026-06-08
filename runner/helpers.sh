@@ -22,7 +22,7 @@ require_tools() {
         missing=1
     fi
 
-    for f in "$HARNESS_GEN" "$EXTRAS_GEN" "$ANALYZE"; do
+    for f in "$HARNESS_GEN" "$ANALYZE"; do
         if [ ! -f "$f" ]; then
             err "Helper script not found: $f"
             missing=1

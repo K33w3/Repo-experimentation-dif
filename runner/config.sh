@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 PROJECT_DIR="$( cd "${SCRIPT_DIR}/.." >/dev/null 2>&1 && pwd )"
 HARNESS_GEN="${PROJECT_DIR}/generate_harness.py"
-EXTRAS_GEN="${PROJECT_DIR}/generate_extras.py"
+
 ANALYZE="${PROJECT_DIR}/analyze_binary.py"
 COLLECT_RESULTS="${SCRIPT_DIR}/collect_results.py"
 EXTRACT_STATUS="${SCRIPT_DIR}/extract_status.py"

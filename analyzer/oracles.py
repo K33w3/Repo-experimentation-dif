@@ -159,18 +159,6 @@ def check_cf_check(
     return []
 
 
-def observe_jumptable(d_text: str) -> dict:
-    body = extract_function_body(d_text, "ibt_x_jumptable")
-    indirects = find_indirect_calls(body) if body else []
-    has_notrack = any(
-        callsite_has_notrack(b, m) for _, b, m in indirects
-    )
-    return {
-        "table_detected": len(indirects) > 0,
-        "indirect_jmp_count": len(indirects),
-        "indirect_jmp_notrack": has_notrack,
-    }
-
 
 def _callee_bug(
     issue: str, addr: int, symbols: list[str], plan_row: dict, details: str,

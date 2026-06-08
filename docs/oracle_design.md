@@ -32,9 +32,6 @@ Bugs flagged: MISSING_NOTRACK, UNEXPECTED_NOTRACK.
 
 Ensures ibt_x_cf_check starts with endbr64, as the cf_check attribute opts into IBT.
 
-## Jump Tables
-
-Observes compiler-generated jump tables from the switch/case in the extras file. Records indirect jump counts and notrack prefixes. Flags no bugs.
 
 ## Cross-Configuration Differential
 

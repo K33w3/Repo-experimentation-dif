@@ -17,9 +17,6 @@ init_csv_files() {
     echo 'test_id,config,total_endbr64' \
         > "${dir}/endbr64_counts.csv"
 
-    echo 'test_id,config,switch_table_detected,indirect_jmp_count,indirect_jmp_notrack' \
-        > "${dir}/jumptable.csv"
-
     echo 'test_id,config,target,expected_notrack,mapped,observed_notrack,callsite_addr' \
         > "${dir}/callsite_detail.csv"
 }

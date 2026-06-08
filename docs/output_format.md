@@ -7,7 +7,6 @@ All CSV files are saved in the results directory.
 - aliases.csv: Records addresses where multiple symbols share the same code due to Identical Code Folding. This is a normal compiler optimization and not a bug.
 - differential.csv: Logs cases where different compiler configurations disagree on the ENDBR status of the exact same function.
 - endbr64_counts.csv: Records the total number of endbr64 instructions across the entire binary for comparison.
-- jumptable.csv: Observational data showing whether jump tables were detected and if any of their indirect jumps use a notrack prefix.
 - callsite_detail.csv: Details each shim's indirect call, tracking whether the call was found in the disassembly, if notrack was expected, and if it was actually observed.
 
 ## JSON Analysis Report

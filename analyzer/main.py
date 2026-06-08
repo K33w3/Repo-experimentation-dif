@@ -13,7 +13,6 @@ from .oracles import (
     check_callee_endbr,
     check_callsite_notrack,
     check_cf_check,
-    observe_jumptable,
 )
 from .symbols import build_name_index, collect_symbols, find_alias_groups
 
@@ -49,7 +48,7 @@ def main() -> None:
     ) = check_callsite_notrack(targets, plan, d_full)
 
     cfc_bugs = check_cf_check(name_to_addr, d_full)
-    jumptable = observe_jumptable(d_full)
+
 
     all_bugs = callee_bugs + site_bugs + cfc_bugs
     total_callee_bugs = n_callee + len(cfc_bugs)
@@ -72,7 +71,7 @@ def main() -> None:
         "total_bugs": len(all_bugs),
         "target_status": target_status,
         "callsite_records": callsite_records,
-        "jumptable": jumptable,
+
     }
 
     Path(args.out).write_text(json.dumps(result))

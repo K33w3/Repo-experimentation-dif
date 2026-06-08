@@ -8,7 +8,7 @@ import sys
 
 def main() -> None:
     (json_path, summary_p, bug_p, alias_p,
-     endbr_p, jt_p, cs_p) = sys.argv[1:8]
+     endbr_p, cs_p) = sys.argv[1:7]
 
     with open(json_path) as f:
         d = json.load(f)
@@ -44,15 +44,6 @@ def main() -> None:
 
     with open(endbr_p, "a", newline="") as f:
         csv.writer(f).writerow([tid, cfg, d["total_endbr64"]])
-
-    with open(jt_p, "a", newline="") as f:
-        jt = d.get("jumptable", {})
-        csv.writer(f).writerow([
-            tid, cfg,
-            jt.get("table_detected", ""),
-            jt.get("indirect_jmp_count", ""),
-            jt.get("indirect_jmp_notrack", ""),
-        ])
 
     with open(cs_p, "a", newline="") as f:
         w = csv.writer(f)

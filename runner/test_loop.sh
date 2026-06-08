@@ -6,7 +6,6 @@ run_tests() {
     for test_id in $(seq 1 "$NUM_TESTS"); do
         local src="$PROGRAMS_DIR/test_${test_id}.c"
         local harness="$PROGRAMS_DIR/test_${test_id}_harness.c"
-        local extras="$PROGRAMS_DIR/test_${test_id}_extras.c"
         local plan_csv="$PROGRAMS_DIR/test_${test_id}_plan.csv"
         local targets_txt="$PROGRAMS_DIR/test_${test_id}_targets.txt"
         local seed=$((SEED_BASE + test_id))
@@ -26,10 +25,7 @@ run_tests() {
             continue
         fi
 
-        if ! timeout "$TIMEOUT_GEN" python3 "$EXTRAS_GEN" "$extras" "$seed"; then
-            rm -f "$src" "$harness" "$plan_csv" "$targets_txt" "$extras"
-            continue
-        fi
+
 
         local test_had_bug=0
         unset FSTATUS
@@ -43,7 +39,7 @@ run_tests() {
 
             if ! timeout "$TIMEOUT_COMPILE" bash -lc \
                 "$cfg_cmd -I'$CSMITH_DIR/runtime' -I'$CSMITH_DIR/build/runtime' \
-                 -o '$binary' '$src' '$harness' '$extras'" \
+                 -o '$binary' '$src' '$harness'" \
                 >"$err_log" 2>&1; then
                 continue
             fi
@@ -63,7 +59,6 @@ run_tests() {
                 "$RESULTS_DIR/bugs.csv" \
                 "$RESULTS_DIR/aliases.csv" \
                 "$RESULTS_DIR/endbr64_counts.csv" \
-                "$RESULTS_DIR/jumptable.csv" \
                 "$RESULTS_DIR/callsite_detail.csv"
 
             while IFS=$'\t' read -r tag name st; do
@@ -103,10 +98,9 @@ run_tests() {
         if [ "$test_had_bug" -eq 1 ]; then
             cp "$src"      "$BUGS_DIR/bug_test_${test_id}.c"
             cp "$harness"  "$BUGS_DIR/bug_test_${test_id}_harness.c"
-            cp "$extras"   "$BUGS_DIR/bug_test_${test_id}_extras.c"
             cp "$plan_csv" "$BUGS_DIR/bug_test_${test_id}_plan.csv"
         else
-            rm -f "$src" "$harness" "$extras" "$plan_csv" "$targets_txt"
+            rm -f "$src" "$harness" "$plan_csv" "$targets_txt"
         fi
 
         if [ $((test_id % 25)) -eq 0 ]; then
