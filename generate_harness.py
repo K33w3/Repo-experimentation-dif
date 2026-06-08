@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
-Harness and plan generator entry point. Usage example:
-    python3 generate_harness.py <src> <harness> <plan.csv> <targets.txt> \\
-                                <seed> <min_targets> <max_targets>
+Harness and plan generator entry point.
 """
 import random
 import sys
