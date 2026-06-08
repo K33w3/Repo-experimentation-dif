@@ -60,3 +60,6 @@ Each shim passes its function pointer through an inline-asm identity function wi
 
 ### ICF Limitation
 Identical Code Folding on target function bodies is allowed because turning it off would change the tested code. When ICF merges functions, it is documented in aliases.csv and is not treated as a bug.
+
+### Clang nocf_check Workaround
+Clang drops the nocf_check attribute when function pointers are cast through the opaque barrier, and fails to emit notrack if the call is tail-call optimized. The harness generator bypasses this by applying the attribute to both the variable and the cast, dereferencing the pointer explicitly via (*p)(), and placing an empty inline assembly block after the call to prevent tail calls.
