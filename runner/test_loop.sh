@@ -101,7 +101,7 @@ run_tests() {
             cp "$plan_csv" "$BUGS_DIR/bug_test_${test_id}_plan.csv"
         else
             : # rm -f "$src" "$harness" "$plan_csv" "$targets_txt"
-
+        fi
         if [ $((test_id % 25)) -eq 0 ]; then
             msg "[*] $test_id/$NUM_TESTS | compiled=$compiled_ok | bugs=$bugs_found"
         fi
