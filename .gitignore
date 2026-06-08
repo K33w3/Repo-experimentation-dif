@@ -1,4 +1,3 @@
-# Mac OS
 .DS_Store
 .DS_Store?
 ._*
@@ -6,14 +5,10 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-
-# Environments
 .env
 .venv
 env/
@@ -21,8 +16,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-# Pytest
 .pytest_cache/
 __init__.py
 extras.py

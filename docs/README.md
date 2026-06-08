@@ -62,9 +62,9 @@ differential_framework/
 ## Documentation
 
 Check the docs folder for more details:
-- architecture.md: System design and data flow.
-- oracle_design.md: How the verification works.
-- output_format.md: Explanation of the CSV and JSON files.
+- [architecture.md](architecture.md): System design and data flow.
+- [oracle_design.md](oracle_design.md): How the verification works.
+- [output_format.md](output_format.md): Explanation of the CSV and JSON files.
 
 ## Environment Variables
 
