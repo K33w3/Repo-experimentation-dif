@@ -73,7 +73,7 @@ run_tests() {
                 test_had_bug=1
             fi
 
-            rm -f "$binary"
+            # rm -f "$binary"
         done
 
         if [ -s "$targets_txt" ]; then
