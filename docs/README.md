@@ -1,6 +1,6 @@
 # CET/IBT Differential Testing Framework
 
-This framework tests Intel CET (Control-flow Enforcement Technology) and IBT (Indirect Branch Tracking) compiler implementations. It generates random C programs, adds IBT attributes, compiles them with multiple compilers, and analyzes the binaries to find bugs.
+This framework tests Intel CET (Control-flow Enforcement Technology) and IBT (Indirect Branch Tracking) compiler implementations. It generates random C programs, adds IBT attributes, compiles them with multiple compilers, and analyzes the binaries to find bugs or errors.
 
 ## Quick Start
 
