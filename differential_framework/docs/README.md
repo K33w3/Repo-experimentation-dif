@@ -38,7 +38,6 @@ differential_framework/
 ├── generator/                  # Test-case generation package
 │   ├── signatures.py           #   C signature extraction & parsing
 │   ├── harness.py              #   Harness C-source emission
-│   ├── extras.py               #   Observational lane generation
 │   └── plan.py                 #   Target selection & plan output
 ├── runner/                     # Shell-based test orchestration
 │   ├── config.sh               #   Paths & compiler configurations
@@ -60,12 +59,10 @@ differential_framework/
 │   ├── test_signatures.py      #   Signature extraction tests
 │   ├── test_plan.py            #   Target selection & plan tests
 │   ├── test_harness.py         #   Harness emission tests
-│   ├── test_extras.py          #   Extras generation tests
 │   └── test_collect_results.py #   CSV aggregation tests
 ├── results/                    # Test output data (git-tracked)
 ├── analyze_binary.py           # Entry point → analyzer/
 ├── generate_harness.py         # Entry point → generator/
-├── generate_extras.py          # Entry point → generator/extras
 └── cet_csmith_tester_v3.sh     # Entry point → runner/
 ```
 

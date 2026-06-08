@@ -26,3 +26,4 @@ venv.bak/
 .pytest_cache/
 __init__.py
 extras.py
+tests/
