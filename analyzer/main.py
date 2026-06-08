@@ -51,7 +51,6 @@ def main() -> None:
 
 
     all_bugs = callee_bugs + site_bugs + cfc_bugs
-    total_callee_bugs = n_callee + len(cfc_bugs)
 
     result = {
         "test_id": args.test_id,
@@ -63,15 +62,14 @@ def main() -> None:
         "callsites_mapped": mapped,
         "callsites_nocf_expected": nocf_exp,
         "callsites_nocf_observed": nocf_obs,
-        "callee_bugs": total_callee_bugs,
-        "callsite_bugs": n_site,
+        "callee_bugs": len(callee_bugs) + len(cfc_bugs),
+        "callsite_bugs": len(site_bugs),
         "alias_groups": len(alias_groups),
         "aliases": alias_groups,
         "bugs": all_bugs,
         "total_bugs": len(all_bugs),
         "target_status": target_status,
         "callsite_records": callsite_records,
-
     }
 
     Path(args.out).write_text(json.dumps(result))
